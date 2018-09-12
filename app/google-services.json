@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "365922359042",
+    "firebase_url": "https://funflavor-77823.firebaseio.com",
+    "project_id": "funflavor-77823",
+    "storage_bucket": "funflavor-77823.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365922359042:android:c8eed999f6de20a2",
+        "android_client_info": {
+          "package_name": "com.example.funflavour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365922359042-ddilclm5iv73bac8n540luhv2580rib1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.funflavour",
+            "certificate_hash": "f314107fc9f7516e9cd622fbf455b01b0a3d9951"
+          }
+        },
+        {
+          "client_id": "365922359042-8ig8taml8hs3bo3mc5772o2p6uspv9g4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm9vxajQGiEa8XRK37XhMq8PRnNcHA-Dg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365922359042-8ig8taml8hs3bo3mc5772o2p6uspv9g4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
