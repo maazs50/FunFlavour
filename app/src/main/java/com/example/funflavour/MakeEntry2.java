@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -42,7 +44,7 @@ public class MakeEntry2 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
     private Map<String,Object> calRecord2;
-
+    private ProgressBar makeProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class MakeEntry2 extends AppCompatActivity {
         d110=findViewById(R.id.d110);
         save=findViewById(R.id.save10);
         mAuth=FirebaseAuth.getInstance();
+        makeProgress=findViewById(R.id.makeProgress);
         mFireStore=FirebaseFirestore.getInstance();
         calRecord2=new HashMap<>();
         save.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +87,7 @@ public class MakeEntry2 extends AppCompatActivity {
                         !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
                         !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
                         !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
+                    makeProgress.setVisibility(View.VISIBLE);
                     final int d1=Integer.parseInt(d1String);
                     final int d2=Integer.parseInt(d2String);
                     final int d3=Integer.parseInt(d3String);
@@ -154,6 +158,7 @@ public class MakeEntry2 extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()){
+                                            makeProgress.setVisibility(View.INVISIBLE);
                                             startActivity(new Intent(MakeEntry2.this,MakeEntry3.class));
                                             finish();
                                         }
@@ -167,9 +172,10 @@ public class MakeEntry2 extends AppCompatActivity {
                             } else {
                                 Log.d("Data", "No such document");
                             }
+
                         }
                     });
-                    
+                     makeProgress.setVisibility(View.INVISIBLE);
                     
                     
                 }
@@ -188,4 +194,14 @@ public class MakeEntry2 extends AppCompatActivity {
         return dateStr;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser=mAuth.getCurrentUser();
+        if (currentUser==null){
+            startActivity(new Intent(MakeEntry2.this,SignIn.class));
+            finish();
+        }
+
+    }
 }

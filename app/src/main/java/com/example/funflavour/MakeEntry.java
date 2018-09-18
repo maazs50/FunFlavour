@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.*;
 import java.text.*;
 
@@ -45,6 +48,7 @@ public class MakeEntry extends AppCompatActivity {
     private FirebaseFirestore mFireStore;
     private DocumentSnapshot lastVisible;
     private Map<String,Object> calRecord;
+    private ProgressBar makeProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +64,7 @@ public class MakeEntry extends AppCompatActivity {
         d59=findViewById(R.id.d59);
         d510=findViewById(R.id.d510);
         save=findViewById(R.id.save5);
+        makeProgress=findViewById(R.id.makeProgress);
         mAuth=FirebaseAuth.getInstance();
         mFireStore=FirebaseFirestore.getInstance();
         calRecord=new HashMap<>();
@@ -86,6 +91,7 @@ if (!TextUtils.isEmpty(d1String)&&!TextUtils.isEmpty(d2String)&&
         !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
         !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
         !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
+    makeProgress.setVisibility(View.VISIBLE);
     final int d1=Integer.parseInt(d1String);
     final int d2=Integer.parseInt(d2String);
     final int d3=Integer.parseInt(d3String);
@@ -152,12 +158,18 @@ if (task.isSuccessful()){
                 calRecord.put(Contract.GRAPES,d8-grapesCount);
                 calRecord.put(Contract.LITCHI, d9-litchiCount);
                 calRecord.put(Contract.APPLE,d10-appleCount);
+
+
+
+
                 mFireStore.collection("Records").document("Low Volume").collection(getDate()).document("Calculations").set(calRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            startActivity(new Intent(MakeEntry.this,MakeEntry2.class));
-                            finish();
+                            Intent intent=new Intent(MakeEntry.this,MakeEntry2.class);
+                            makeProgress.setVisibility(View.INVISIBLE);
+
+                            startActivity(intent);
                         }
                         else{
                             String exception = task.getException().toString();
@@ -169,6 +181,7 @@ if (task.isSuccessful()){
                 } else {
                     Log.d("Data", "No such document");
                 }
+            makeProgress.setVisibility(View.INVISIBLE);
         }
     });
 
@@ -191,4 +204,14 @@ public String getDate(){
    return dateStr;
 }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser=mAuth.getCurrentUser();
+        if (currentUser==null){
+            startActivity(new Intent(MakeEntry.this,SignIn.class));
+            finish();
+        }
+
+    }
 }
