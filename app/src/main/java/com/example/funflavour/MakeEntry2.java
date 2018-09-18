@@ -5,17 +5,22 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +41,8 @@ public class MakeEntry2 extends AppCompatActivity {
     private Button save;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
+    private Map<String,Object> calRecord2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +60,7 @@ public class MakeEntry2 extends AppCompatActivity {
         save=findViewById(R.id.save10);
         mAuth=FirebaseAuth.getInstance();
         mFireStore=FirebaseFirestore.getInstance();
-
+        calRecord2=new HashMap<>();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,16 +84,16 @@ public class MakeEntry2 extends AppCompatActivity {
                         !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
                         !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
                         !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
-                    int d1=Integer.parseInt(d1String);
-                    int d2=Integer.parseInt(d2String);
-                    int d3=Integer.parseInt(d3String);
-                    int d4=Integer.parseInt(d4String);
-                    int d5=Integer.parseInt(d5String);
-                    int d6=Integer.parseInt(d6String);
-                    int d7=Integer.parseInt(d7String);
-                    int d8=Integer.parseInt(d8String);
-                    int d9=Integer.parseInt(d9String);
-                    int d10=Integer.parseInt(d10String);
+                    final int d1=Integer.parseInt(d1String);
+                    final int d2=Integer.parseInt(d2String);
+                    final int d3=Integer.parseInt(d3String);
+                    final int d4=Integer.parseInt(d4String);
+                    final int d5=Integer.parseInt(d5String);
+                    final int d6=Integer.parseInt(d6String);
+                    final int d7=Integer.parseInt(d7String);
+                    final int d8=Integer.parseInt(d8String);
+                    final int d9=Integer.parseInt(d9String);
+                    final int d10=Integer.parseInt(d10String);
 
                     Map<String, Object> record = new HashMap<>();
                     record.put("Time", FieldValue.serverTimestamp());
@@ -107,14 +114,64 @@ public class MakeEntry2 extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(MakeEntry2.this,"Successfull ", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MakeEntry2.this,MakeEntry3.class));
-                                finish();
+
                             } else {
                                 String exception = task.getException().toString();
-                                Toast.makeText(MakeEntry2.this, "Error : " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MakeEntry2.this, "Error : " + exception, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
+//Get the last document records in order to calculate the counts TodaysRecord - lastDOcumentsRecord
+
+                    Query lastRecords =  mFireStore.collection("High Volume").orderBy("Time", Query.Direction.DESCENDING).limit(2);
+                    lastRecords.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot documentSnapshots) {
+                            DocumentSnapshot document=documentSnapshots.getDocuments().get(1);
+                            if (document.exists()) {
+                                int lemonCount= Integer.parseInt(document.getData().get(Contract.LEMON).toString());
+                                int fruitBeerCount= Integer.parseInt(document.getData().get(Contract.FRUIT_BEER).toString());
+                                int strawberryCount= Integer.parseInt(document.getData().get(Contract.STRAWBERRY).toString());
+                                int orangeCount= Integer.parseInt(document.getData().get(Contract.ORANGE).toString());
+                                int jeeraCount= Integer.parseInt(document.getData().get(Contract.JEERA).toString());
+                                int colaCount= Integer.parseInt(document.getData().get(Contract.COLA).toString());
+                                int blueberryCount= Integer.parseInt(document.getData().get(Contract.BLUEBERRY).toString());
+                                int grapesCount= Integer.parseInt(document.getData().get(Contract.GRAPES).toString());
+                                int litchiCount= Integer.parseInt(document.getData().get(Contract.LITCHI).toString());
+                                int appleCount= Integer.parseInt(document.getData().get(Contract.APPLE).toString());
+                                calRecord2.put("Time",FieldValue.serverTimestamp());
+                                calRecord2.put(Contract.LEMON,d1-lemonCount);
+                                calRecord2.put(Contract.FRUIT_BEER, d2-fruitBeerCount);
+                                calRecord2.put(Contract.STRAWBERRY, d3-strawberryCount);
+                                calRecord2.put(Contract.ORANGE,d4-orangeCount);
+                                calRecord2.put(Contract.JEERA, d5-jeeraCount);
+                                calRecord2.put(Contract.COLA, d6-colaCount);
+                                calRecord2.put(Contract.BLUEBERRY, d7-blueberryCount);
+                                calRecord2.put(Contract.GRAPES,d8-grapesCount);
+                                calRecord2.put(Contract.LITCHI, d9-litchiCount);
+                                calRecord2.put(Contract.APPLE,d10-appleCount);
+                                mFireStore.collection("Records").document("High Volume").collection(getDate()).document("Calculations").set(calRecord2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                            startActivity(new Intent(MakeEntry2.this,MakeEntry3.class));
+                                            finish();
+                                        }
+                                        else{
+                                            String exception = task.getException().toString();
+                                            Toast.makeText(MakeEntry2.this, "Error : " + exception, Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+                            } else {
+                                Log.d("Data", "No such document");
+                            }
+                        }
+                    });
+                    
+                    
+                    
                 }
                 else{
                     Toast.makeText(MakeEntry2.this,"Enter all the field",Toast.LENGTH_SHORT).show();

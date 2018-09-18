@@ -53,13 +53,29 @@ private FirebaseFirestore firebaseFirestore;
                         if (task.isSuccessful()){
                             Toast.makeText(MakeEntry3.this,"Successfull ", Toast.LENGTH_SHORT).show();
 
-                            finish();
                         } else {
                             String exception = task.getException().toString();
                             Toast.makeText(MakeEntry3.this, "Error : " + exception, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+                //Save in records
+                data.put("Total",mangoValue*7);
+                firebaseFirestore.collection("Records").document("Mango").collection(getDate()).document("Calculations").set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            startActivity(new Intent(MakeEntry3.this,MainActivity.class));
+                            finish();
+                        }else{
+                            String exception = task.getException().toString();
+                            Toast.makeText(MakeEntry3.this, "Error : " + exception, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+
             }
             else{
                 Toast.makeText(MakeEntry3.this,"Enter all the field",Toast.LENGTH_SHORT).show();
@@ -76,5 +92,7 @@ private FirebaseFirestore firebaseFirestore;
         String dateStr=formatter.format(date).toString();
         return dateStr;
     }
+
+
 
 }

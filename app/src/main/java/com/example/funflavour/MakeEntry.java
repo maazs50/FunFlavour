@@ -5,17 +5,26 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.*;
 import java.text.*;
@@ -34,6 +43,8 @@ public class MakeEntry extends AppCompatActivity {
     private Button save;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
+    private DocumentSnapshot lastVisible;
+    private Map<String,Object> calRecord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +62,7 @@ public class MakeEntry extends AppCompatActivity {
         save=findViewById(R.id.save5);
         mAuth=FirebaseAuth.getInstance();
         mFireStore=FirebaseFirestore.getInstance();
-
+        calRecord=new HashMap<>();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,16 +86,16 @@ if (!TextUtils.isEmpty(d1String)&&!TextUtils.isEmpty(d2String)&&
         !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
         !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
         !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
-    int d1=Integer.parseInt(d1String);
-    int d2=Integer.parseInt(d2String);
-    int d3=Integer.parseInt(d3String);
-    int d4=Integer.parseInt(d4String);
-    int d5=Integer.parseInt(d5String);
-    int d6=Integer.parseInt(d6String);
-    int d7=Integer.parseInt(d7String);
-    int d8=Integer.parseInt(d8String);
-    int d9=Integer.parseInt(d9String);
-    int d10=Integer.parseInt(d10String);
+    final int d1=Integer.parseInt(d1String);
+    final int d2=Integer.parseInt(d2String);
+    final int d3=Integer.parseInt(d3String);
+    final int d4=Integer.parseInt(d4String);
+    final int d5=Integer.parseInt(d5String);
+    final int d6=Integer.parseInt(d6String);
+    final int d7=Integer.parseInt(d7String);
+    final int d8=Integer.parseInt(d8String);
+    final int d9=Integer.parseInt(d9String);
+    final int d10=Integer.parseInt(d10String);
 
     Map<String, Object> record = new HashMap<>();
     record.put("Time", FieldValue.serverTimestamp());
@@ -99,20 +110,68 @@ if (!TextUtils.isEmpty(d1String)&&!TextUtils.isEmpty(d2String)&&
     record.put(Contract.LITCHI, d9);
     record.put(Contract.APPLE, d10);
 
-
+//Store the value in count
     mFireStore.collection("Low Volume").document(getDate()).set(record).addOnCompleteListener(new OnCompleteListener<Void>() {
         @Override
         public void onComplete(@NonNull Task<Void> task) {
 if (task.isSuccessful()){
     Toast.makeText(MakeEntry.this,"Successfull ", Toast.LENGTH_SHORT).show();
-    startActivity(new Intent(MakeEntry.this,MakeEntry2.class));
-    finish();
+
 } else {
     String exception = task.getException().toString();
-    Toast.makeText(MakeEntry.this, "Error : " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+    Toast.makeText(MakeEntry.this, "Error : " +exception, Toast.LENGTH_SHORT).show();
 }
         }
     });
+
+//Get the last document records in order to calculate the counts TodaysRecord - lastDOcumentsRecord
+    Query lastRecords =  mFireStore.collection("Low Volume").orderBy("Time", Query.Direction.DESCENDING).limit(2);
+    lastRecords.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        @Override
+        public void onSuccess(QuerySnapshot documentSnapshots) {
+            DocumentSnapshot document=documentSnapshots.getDocuments().get(1);
+            if (document.exists()) {
+                  int lemonCount= Integer.parseInt(document.getData().get(Contract.LEMON).toString());
+                  int fruitBeerCount= Integer.parseInt(document.getData().get(Contract.FRUIT_BEER).toString());
+                  int strawberryCount= Integer.parseInt(document.getData().get(Contract.STRAWBERRY).toString());
+                  int orangeCount= Integer.parseInt(document.getData().get(Contract.ORANGE).toString());
+                  int jeeraCount= Integer.parseInt(document.getData().get(Contract.JEERA).toString());
+                  int colaCount= Integer.parseInt(document.getData().get(Contract.COLA).toString());
+                  int blueberryCount= Integer.parseInt(document.getData().get(Contract.BLUEBERRY).toString());
+                  int grapesCount= Integer.parseInt(document.getData().get(Contract.GRAPES).toString());
+                  int litchiCount= Integer.parseInt(document.getData().get(Contract.LITCHI).toString());
+                  int appleCount= Integer.parseInt(document.getData().get(Contract.APPLE).toString());
+                calRecord.put("Time",FieldValue.serverTimestamp());
+                calRecord.put(Contract.LEMON,d1-lemonCount);
+                calRecord.put(Contract.FRUIT_BEER, d2-fruitBeerCount);
+                calRecord.put(Contract.STRAWBERRY, d3-strawberryCount);
+                calRecord.put(Contract.ORANGE,d4-orangeCount);
+                calRecord.put(Contract.JEERA, d5-jeeraCount);
+                calRecord.put(Contract.COLA, d6-colaCount);
+                calRecord.put(Contract.BLUEBERRY, d7-blueberryCount);
+                calRecord.put(Contract.GRAPES,d8-grapesCount);
+                calRecord.put(Contract.LITCHI, d9-litchiCount);
+                calRecord.put(Contract.APPLE,d10-appleCount);
+                mFireStore.collection("Records").document("Low Volume").collection(getDate()).document("Calculations").set(calRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            startActivity(new Intent(MakeEntry.this,MakeEntry2.class));
+                            finish();
+                        }
+                        else{
+                            String exception = task.getException().toString();
+                            Toast.makeText(MakeEntry.this, "Error : " + exception, Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                } else {
+                    Log.d("Data", "No such document");
+                }
+        }
+    });
+
 }
 else{
     Toast.makeText(MakeEntry.this,"Enter all the field",Toast.LENGTH_SHORT).show();
@@ -122,6 +181,9 @@ else{
         });
 
     }
+
+
+
 public String getDate(){
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     Date date = new Date();
