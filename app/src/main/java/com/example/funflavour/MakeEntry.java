@@ -28,7 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.Serializable;
 import java.util.*;
 import java.text.*;
 
@@ -53,6 +52,7 @@ public class MakeEntry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_entry);
+        getSupportActionBar().setTitle("Low Volume");
         d51=findViewById(R.id.d51);
         d52=findViewById(R.id.d52);
         d53=findViewById(R.id.d53);
@@ -147,22 +147,35 @@ if (task.isSuccessful()){
                   int grapesCount= Integer.parseInt(document.getData().get(Contract.GRAPES).toString());
                   int litchiCount= Integer.parseInt(document.getData().get(Contract.LITCHI).toString());
                   int appleCount= Integer.parseInt(document.getData().get(Contract.APPLE).toString());
+                int r1 = d1 - lemonCount;
+                int r2 = d2 - fruitBeerCount;
+                int r3 = d3 - strawberryCount;
+                int r4 = d4 - orangeCount;
+                int r5 = d5 - jeeraCount;
+                int r6 = d6 - colaCount;
+                int r7 = d7 - blueberryCount;
+                int r8 = d8 - grapesCount;
+                int r9 = d9 - litchiCount;
+                int r10 = d10 - appleCount;
+                int sum=sum(r1,r2,r3,r4,r5,r6,r7,r8,r9,r10) ;
                 calRecord.put("Time",FieldValue.serverTimestamp());
-                calRecord.put(Contract.LEMON,d1-lemonCount);
-                calRecord.put(Contract.FRUIT_BEER, d2-fruitBeerCount);
-                calRecord.put(Contract.STRAWBERRY, d3-strawberryCount);
-                calRecord.put(Contract.ORANGE,d4-orangeCount);
-                calRecord.put(Contract.JEERA, d5-jeeraCount);
-                calRecord.put(Contract.COLA, d6-colaCount);
-                calRecord.put(Contract.BLUEBERRY, d7-blueberryCount);
-                calRecord.put(Contract.GRAPES,d8-grapesCount);
-                calRecord.put(Contract.LITCHI, d9-litchiCount);
-                calRecord.put(Contract.APPLE,d10-appleCount);
+                calRecord.put(Contract.LEMON,r1);
+                calRecord.put(Contract.FRUIT_BEER, r2);
+                calRecord.put(Contract.STRAWBERRY, r3);
+                calRecord.put(Contract.ORANGE,r4);
+                calRecord.put(Contract.JEERA, r5);
+                calRecord.put(Contract.COLA, r6);
+                calRecord.put(Contract.BLUEBERRY, r7);
+                calRecord.put(Contract.GRAPES,r8);
+                calRecord.put(Contract.LITCHI, r9);
+                calRecord.put(Contract.APPLE,r10);
+                calRecord.put(Contract.TOTAL_COUNT,sum);
+                calRecord.put(Contract.TOTAL_AMOUNT,sum*5);
 
 
 
 
-                mFireStore.collection("Records").document("Low Volume").collection(getDate()).document("Calculations").set(calRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mFireStore.collection("Records").document("Low Volume").collection("Calculations").document(getDate()).set(calRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
@@ -213,5 +226,8 @@ public String getDate(){
             finish();
         }
 
+    }
+    private int sum(int r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10) {
+        return r1 +r2 + r3 +r4 +r5 +r6 +r7 +r8 +r9 +r10;
     }
 }

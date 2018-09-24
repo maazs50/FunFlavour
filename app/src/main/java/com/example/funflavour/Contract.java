@@ -12,4 +12,6 @@ public class Contract {
     public final static String LITCHI="litchi";
     public final static String APPLE="apple";
     public final static String MANGO="mango";
+    public final static String TOTAL_COUNT="TotalCount";
+    public final static String TOTAL_AMOUNT="TotalAmount";
 }

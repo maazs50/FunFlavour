@@ -49,6 +49,7 @@ public class MakeEntry2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_entry2);
+        getSupportActionBar().setTitle("High Volume");
         d101=findViewById(R.id.d101);
         d102=findViewById(R.id.d102);
         d103=findViewById(R.id.d103);
@@ -61,7 +62,7 @@ public class MakeEntry2 extends AppCompatActivity {
         d110=findViewById(R.id.d110);
         save=findViewById(R.id.save10);
         mAuth=FirebaseAuth.getInstance();
-        makeProgress=findViewById(R.id.makeProgress);
+        makeProgress=findViewById(R.id.makeProgress2);
         mFireStore=FirebaseFirestore.getInstance();
         calRecord2=new HashMap<>();
         save.setOnClickListener(new View.OnClickListener() {
@@ -143,18 +144,31 @@ public class MakeEntry2 extends AppCompatActivity {
                                 int grapesCount= Integer.parseInt(document.getData().get(Contract.GRAPES).toString());
                                 int litchiCount= Integer.parseInt(document.getData().get(Contract.LITCHI).toString());
                                 int appleCount= Integer.parseInt(document.getData().get(Contract.APPLE).toString());
+                                int r1 = d1 - lemonCount;
+                                int r2 = d2 - fruitBeerCount;
+                                int r3 = d3 - strawberryCount;
+                                int r4 = d4 - orangeCount;
+                                int r5 = d5 - jeeraCount;
+                                int r6 = d6 - colaCount;
+                                int r7 = d7 - blueberryCount;
+                                int r8 = d8 - grapesCount;
+                                int r9 = d9 - litchiCount;
+                                int r10 = d10 - appleCount;
+                                int sum=sum(r1,r2,r3,r4,r5,r6,r7,r8,r9,r10) ;
                                 calRecord2.put("Time",FieldValue.serverTimestamp());
-                                calRecord2.put(Contract.LEMON,d1-lemonCount);
-                                calRecord2.put(Contract.FRUIT_BEER, d2-fruitBeerCount);
-                                calRecord2.put(Contract.STRAWBERRY, d3-strawberryCount);
-                                calRecord2.put(Contract.ORANGE,d4-orangeCount);
-                                calRecord2.put(Contract.JEERA, d5-jeeraCount);
-                                calRecord2.put(Contract.COLA, d6-colaCount);
-                                calRecord2.put(Contract.BLUEBERRY, d7-blueberryCount);
-                                calRecord2.put(Contract.GRAPES,d8-grapesCount);
-                                calRecord2.put(Contract.LITCHI, d9-litchiCount);
-                                calRecord2.put(Contract.APPLE,d10-appleCount);
-                                mFireStore.collection("Records").document("High Volume").collection(getDate()).document("Calculations").set(calRecord2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                calRecord2.put(Contract.LEMON,r1);
+                                calRecord2.put(Contract.FRUIT_BEER, r2);
+                                calRecord2.put(Contract.STRAWBERRY, r3);
+                                calRecord2.put(Contract.ORANGE,r4);
+                                calRecord2.put(Contract.JEERA, r5);
+                                calRecord2.put(Contract.COLA, r6);
+                                calRecord2.put(Contract.BLUEBERRY, r7);
+                                calRecord2.put(Contract.GRAPES,r8);
+                                calRecord2.put(Contract.LITCHI, r9);
+                                calRecord2.put(Contract.APPLE,r10);
+                                calRecord2.put(Contract.TOTAL_COUNT,sum);
+                                calRecord2.put(Contract.TOTAL_AMOUNT,sum*10);
+                                mFireStore.collection("Records").document("High Volume").collection("Calculations").document(getDate()).set(calRecord2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()){
@@ -187,6 +201,11 @@ public class MakeEntry2 extends AppCompatActivity {
         });
 
     }
+
+    private int sum(int r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10) {
+        return r1 +r2 + r3 +r4 +r5 +r6 +r7 +r8 +r9 +r10;
+    }
+
     public String getDate(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date();

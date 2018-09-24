@@ -25,15 +25,17 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button makeEntry;
+    Button makeEntry,records,signOut;
+
 
         private FirebaseAuth mAuth;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
+            records=findViewById(R.id.records);
             makeEntry=findViewById(R.id.entry);
+            signOut=findViewById(R.id.signout);
             makeEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -41,9 +43,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             mAuth=FirebaseAuth.getInstance();
-
+            records.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,RecordActivity.class));
+                }
+            });
 //Map for entry
-
+signOut.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        mAuth.signOut();
+        sendToLogin();
+    }
+});
         }
 
         @Override
