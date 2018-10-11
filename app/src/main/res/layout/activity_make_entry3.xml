@@ -72,11 +72,13 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="" />
+
             <TextView
                 android:id="@+id/lowVolTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" android:textColor="#000000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +101,7 @@
                 android:id="@+id/highVolTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"  android:textSize="18sp" android:textColor="#000000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +124,7 @@
                 android:id="@+id/mangoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"  android:textSize="18sp" android:textColor="#000000"/>
         </LinearLayout>
 
         <LinearLayout
@@ -144,7 +146,7 @@
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"  android:textSize="18sp" android:textColor="#000000"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +41,16 @@ public class MakeEntry2 extends AppCompatActivity {
     private EditText d108;
     private EditText d109;
     private EditText d110;
+    private TextView p101;
+    private TextView p102;
+    private TextView p103;
+    private TextView p104;
+    private TextView p105;
+    private TextView p106;
+    private TextView p107;
+    private TextView p108;
+    private TextView p109;
+    private TextView p1010;
     private Button save;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
@@ -50,21 +61,8 @@ public class MakeEntry2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_entry2);
         getSupportActionBar().setTitle("High Volume");
-        d101=findViewById(R.id.d101);
-        d102=findViewById(R.id.d102);
-        d103=findViewById(R.id.d103);
-        d104=findViewById(R.id.d104);
-        d105=findViewById(R.id.d105);
-        d106=findViewById(R.id.d106);
-        d107=findViewById(R.id.d107);
-        d108=findViewById(R.id.d108);
-        d109=findViewById(R.id.d109);
-        d110=findViewById(R.id.d110);
-        save=findViewById(R.id.save10);
-        mAuth=FirebaseAuth.getInstance();
-        makeProgress=findViewById(R.id.makeProgress2);
-        mFireStore=FirebaseFirestore.getInstance();
-        calRecord2=new HashMap<>();
+        initialize();
+        populate();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,4 +221,65 @@ public class MakeEntry2 extends AppCompatActivity {
         }
 
     }
+    private void initialize(){
+        d101=findViewById(R.id.d101);
+        d102=findViewById(R.id.d102);
+        d103=findViewById(R.id.d103);
+        d104=findViewById(R.id.d104);
+        d105=findViewById(R.id.d105);
+        d106=findViewById(R.id.d106);
+        d107=findViewById(R.id.d107);
+        d108=findViewById(R.id.d108);
+        d109=findViewById(R.id.d109);
+        d110=findViewById(R.id.d110);
+        p101=findViewById(R.id.p101);
+        p102=findViewById(R.id.p102);
+        p103=findViewById(R.id.p103);
+        p104=findViewById(R.id.p104);
+        p105=findViewById(R.id.p105);
+        p106=findViewById(R.id.p106);
+        p107=findViewById(R.id.p107);
+        p108=findViewById(R.id.p108);
+        p109=findViewById(R.id.p109);
+        p1010=findViewById(R.id.p1010);
+        save=findViewById(R.id.save10);
+        mAuth=FirebaseAuth.getInstance();
+        makeProgress=findViewById(R.id.makeProgress2);
+        mFireStore=FirebaseFirestore.getInstance();
+        calRecord2=new HashMap<>();
+    }
+    private void populate() {
+
+        Query lastRecord =  mFireStore.collection("High Volume").orderBy("Time", Query.Direction.DESCENDING).limit(1);
+        lastRecord.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot documentSnapshots) {
+                DocumentSnapshot document=documentSnapshots.getDocuments().get(0);
+                String lemon=document.getData().get(Contract.LEMON).toString();
+                String fruitBeer=document.getData().get(Contract.FRUIT_BEER).toString();
+                String strawberry=document.getData().get(Contract.STRAWBERRY).toString();
+                String orange=document.getData().get(Contract.ORANGE).toString();
+                String jeera=document.getData().get(Contract.JEERA).toString();
+                String cola=document.getData().get(Contract.COLA).toString();
+                String blueberry=document.getData().get(Contract.BLUEBERRY).toString();
+                String grapes=document.getData().get(Contract.GRAPES).toString();
+                String litchi=document.getData().get(Contract.LITCHI).toString();
+                String apple=document.getData().get(Contract.APPLE).toString();
+
+                p101.setText(lemon);
+                p102.setText(fruitBeer);
+                p103.setText(strawberry);
+                p104.setText(orange);
+                p105.setText(jeera);
+                p106.setText(cola);
+                p107.setText(blueberry);
+                p108.setText(grapes);
+                p109.setText(litchi);
+                p1010.setText(apple);
+            }
+        });
+
+
+    }
+
 }

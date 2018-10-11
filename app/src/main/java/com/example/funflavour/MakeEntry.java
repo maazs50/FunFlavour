@@ -1,6 +1,7 @@
 package com.example.funflavour;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,6 +44,16 @@ public class MakeEntry extends AppCompatActivity {
     private EditText d58;
     private EditText d59;
     private EditText d510;
+    private TextView p51;
+    private TextView p52;
+    private TextView p53;
+    private TextView p54;
+    private TextView p55;
+    private TextView p56;
+    private TextView p57;
+    private TextView p58;
+    private TextView p59;
+    private TextView p510;
     private Button save;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFireStore;
@@ -53,21 +65,8 @@ public class MakeEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_entry);
         getSupportActionBar().setTitle("Low Volume");
-        d51=findViewById(R.id.d51);
-        d52=findViewById(R.id.d52);
-        d53=findViewById(R.id.d53);
-        d54=findViewById(R.id.d54);
-        d55=findViewById(R.id.d55);
-        d56=findViewById(R.id.d56);
-        d57=findViewById(R.id.d57);
-        d58=findViewById(R.id.d58);
-        d59=findViewById(R.id.d59);
-        d510=findViewById(R.id.d510);
-        save=findViewById(R.id.save5);
-        makeProgress=findViewById(R.id.makeProgress);
-        mAuth=FirebaseAuth.getInstance();
-        mFireStore=FirebaseFirestore.getInstance();
-        calRecord=new HashMap<>();
+        initalize();
+        populate();
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,9 +207,42 @@ else{
 
     }
 
+    private void populate() {
+
+        Query lastRecord =  mFireStore.collection("Low Volume").orderBy("Time", Query.Direction.DESCENDING).limit(1);
+        lastRecord.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot documentSnapshots) {
+                DocumentSnapshot document=documentSnapshots.getDocuments().get(0);
+                String lemon=document.getData().get(Contract.LEMON).toString();
+                String fruitBeer=document.getData().get(Contract.FRUIT_BEER).toString();
+                String strawberry=document.getData().get(Contract.STRAWBERRY).toString();
+                String orange=document.getData().get(Contract.ORANGE).toString();
+                String jeera=document.getData().get(Contract.JEERA).toString();
+                String cola=document.getData().get(Contract.COLA).toString();
+                String blueberry=document.getData().get(Contract.BLUEBERRY).toString();
+                String grapes=document.getData().get(Contract.GRAPES).toString();
+                String litchi=document.getData().get(Contract.LITCHI).toString();
+                String apple=document.getData().get(Contract.APPLE).toString();
+
+                    p51.setText(lemon);
+                    p52.setText(fruitBeer);
+                    p53.setText(strawberry);
+                    p54.setText(orange);
+                    p55.setText(jeera);
+                    p56.setText(cola);
+                    p57.setText(blueberry);
+                    p58.setText(grapes);
+                    p59.setText(litchi);
+                    p510.setText(apple);
+            }
+        });
 
 
-public String getDate(){
+    }
+
+
+    public String getDate(){
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     Date date = new Date();
     String dateStr=formatter.format(date).toString();
@@ -229,5 +261,42 @@ public String getDate(){
     }
     private int sum(int r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10) {
         return r1 +r2 + r3 +r4 +r5 +r6 +r7 +r8 +r9 +r10;
+    }
+//
+//    private class LoadPreviousValues extends AsyncTask<>{
+//
+//        @Override
+//        protected Object doInBackground(Object[] objects) {
+//            return null;
+//        }
+//    }
+
+    private void initalize(){
+        d51=findViewById(R.id.d51);
+        d52=findViewById(R.id.d52);
+        d53=findViewById(R.id.d53);
+        d54=findViewById(R.id.d54);
+        d55=findViewById(R.id.d55);
+        d56=findViewById(R.id.d56);
+        d57=findViewById(R.id.d57);
+        d58=findViewById(R.id.d58);
+        d59=findViewById(R.id.d59);
+        d510=findViewById(R.id.d510);
+        p51=findViewById(R.id.p51);
+        p52=findViewById(R.id.p52);
+        p53=findViewById(R.id.p53);
+        p54=findViewById(R.id.p54);
+        p55=findViewById(R.id.p55);
+        p56=findViewById(R.id.p56);
+        p57=findViewById(R.id.p57);
+        p58=findViewById(R.id.p58);
+        p59=findViewById(R.id.p59);
+        p510=findViewById(R.id.p510);
+
+        save=findViewById(R.id.save5);
+        makeProgress=findViewById(R.id.makeProgress);
+        mAuth=FirebaseAuth.getInstance();
+        mFireStore=FirebaseFirestore.getInstance();
+        calRecord=new HashMap<>();
     }
 }

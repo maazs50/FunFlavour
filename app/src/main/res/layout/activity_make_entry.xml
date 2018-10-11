@@ -11,7 +11,7 @@
         android:visibility="invisible" />
 <TextView
     android:layout_width="match_parent"
-    android:layout_height="80dp" android:textColor="@color/colorPrimaryDark"
+    android:layout_height="50dp" android:textColor="@color/colorPrimaryDark"
     android:text="Low Volume(5)" android:gravity="center" />
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -25,6 +25,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d51" android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p51"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -38,6 +44,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d52"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p52"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -51,6 +63,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d53"   android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p53"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -64,6 +82,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d54"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p54"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -76,6 +100,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d55"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p55"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -89,6 +119,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d56"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p56"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
 
     </LinearLayout>
     <LinearLayout
@@ -103,6 +139,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d57"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p57"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -116,6 +158,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d58"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p58"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -129,6 +177,12 @@
         <EditText
             android:layout_width="100dp" android:id="@+id/d59"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p59"
+            android:layout_height="wrap_content"
+            android:text="Lemon"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -143,11 +197,17 @@
             android:layout_width="100dp" android:id="@+id/d510"  android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
 
-        <Button
-            android:id="@+id/save5"
-            android:layout_width="100dp"
+        <TextView
+
+            android:layout_width="100dp" android:gravity="center" android:id="@+id/p510"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:text="Save" />
+            android:text="Lemon"
+            />
     </LinearLayout>
+    <Button
+        android:id="@+id/save5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="Save" android:layout_gravity="center" />
 </LinearLayout>
