@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MakeEntry3">
+    tools:context=".MakeEntry3" android:background="#def2de">
 
 
     <TextView
@@ -34,10 +34,10 @@
 
     <Button
         android:id="@+id/save"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:text="Save"
+        android:text="Save" android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/mango"
         app:layout_constraintStart_toStartOf="@+id/mango"
         app:layout_constraintTop_toBottomOf="@+id/mango" />
@@ -159,5 +159,5 @@
         android:layout_marginStart="128dp"
         android:text="Finish"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" android:background="#f4cc9f" />
 </android.support.constraint.ConstraintLayout>

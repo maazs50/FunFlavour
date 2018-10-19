@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/funflavors_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/funflavors_logo"
+        android:roundIcon="@drawable/funflavors_logo2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -21,16 +21,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignIn" />
-        <activity android:name=".MakeEntry" android:configChanges="keyboardHidden|orientation"/>
-        <activity android:name=".MakeEntry2" android:configChanges="keyboardHidden|orientation"/>
-        <activity android:name=".MakeEntry3" android:configChanges="keyboardHidden|orientation"/>
-        <activity android:name=".RecordActivity" android:label="Records"
+        <activity android:name=".MainActivity" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"/>
+        <activity android:name=".MakeEntry" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"/>
+        <activity android:name=".MakeEntry2" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"/>
+        <activity android:name=".MakeEntry3" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"/>
+        <activity android:name=".RecordActivity" android:label="Records" android:screenOrientation="portrait"
             android:parentActivityName="com.example.funflavour.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.funflavour.MainActivity" />
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".RecordList" android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

@@ -5,24 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp" android:background="#def2de">
 
     <Button
         android:id="@+id/entry"
 
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="57dp"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginStart="57dp"
-        android:layout_marginTop="140dp"
-        android:shadowColor="#A8A8A8"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="25dp"
+        android:shadowColor="#562e19"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Make Entry"
-        android:textColor="#FFFFFF"
+        android:textColor="#d4c99e"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/records"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,20 +31,18 @@
 
     <Button
         android:id="@+id/records"
-
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="57dp"
         android:layout_marginStart="57dp"
-        android:shadowColor="#A8A8A8"
+        android:layout_marginEnd="57dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="30dp"
+        android:shadowColor="#562e19"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Records"
-        android:textColor="#FFFFFF"
+        android:textColor="#d4c99e"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/signout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,15 +55,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:layout_marginBottom="136dp"
-        android:layout_marginEnd="57dp"
         android:layout_marginStart="57dp"
+        android:background="@color/colorPrimaryDark"
+
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="136dp"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Sign Out"
-        android:textColor="#FFFFFF"
+        android:textColor="#d4c99e"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +73,28 @@
         app:layout_constraintTop_toBottomOf="@+id/records" />
 
 
+    <Button
+        android:id="@+id/exit"
+        android:background="@color/colorPrimaryDark"
 
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+
+        android:layout_marginStart="57dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="56dp"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="Exit"
+        android:textColor="#d4c99e"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signout"
+        app:layout_constraintVertical_bias="0.923" />
 
 </android.support.constraint.ConstraintLayout>

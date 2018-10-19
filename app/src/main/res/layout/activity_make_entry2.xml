@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="#def2de">
     <ProgressBar
         android:id="@+id/makeProgress2"
         style="?android:attr/progressBarStyleHorizontal"
@@ -16,10 +16,8 @@
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
-        <TextView
-
-            android:layout_width="100dp" android:gravity="center"
-            android:layout_height="wrap_content"
+        <TextView android:layout_width="100dp" android:gravity="center"
+            android:layout_height="wrap_content" android:background="@color/label"
             android:text="Lemon"
             />
         <EditText
@@ -29,14 +27,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p101"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Fruit Beer"
@@ -48,14 +46,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p102"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="StrawBerry"
@@ -67,14 +65,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p103"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Orange"
@@ -86,13 +84,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p104"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
-        android:layout_height="0dp" android:layout_weight="1"><TextView
-
+        android:layout_height="0dp" android:layout_weight="1">
+        <TextView
+            android:background="@color/label"
         android:layout_width="100dp" android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Jeera"
@@ -104,14 +103,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p105"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Cola"
@@ -123,7 +122,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p106"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
 
     </LinearLayout>
@@ -131,7 +130,7 @@
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Blue Berry"
@@ -143,14 +142,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p107"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Grapes"
@@ -162,14 +161,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p108"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Litchi"
@@ -181,14 +180,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p109"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Apple"
@@ -200,14 +199,22 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p1010"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/save10"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">    <Button
+        android:id="@+id/check2"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:text="Save" />
+        android:background="@color/colorPrimary"
+        android:text="Check"  />
+        <Button
+            android:id="@+id/save10"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Save" android:layout_marginLeft="50dp" /></LinearLayout>
 </LinearLayout>

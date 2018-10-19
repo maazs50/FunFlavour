@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="#def2de">
     <ProgressBar
         android:id="@+id/makeProgress"
         style="?android:attr/progressBarStyleHorizontal"
@@ -17,20 +17,22 @@
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="@color/label"
             />
         <EditText
             android:layout_width="100dp" android:id="@+id/d51" android:maxLength="7"
             android:layout_height="wrap_content"  android:inputType="number"/>
+
         <TextView
 
-            android:layout_width="100dp" android:gravity="center" android:id="@+id/p51"
+            android:id="@+id/p51"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Lemon"
-            />
+            android:background="#f4cc9f"
+            android:gravity="center"
+            android:text="Lemon" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
@@ -39,7 +41,7 @@
 
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Fruit Beer"
+            android:text="Fruit Beer" android:background="@color/label"
             />
         <EditText
             android:layout_width="100dp" android:id="@+id/d52"  android:maxLength="7"
@@ -48,14 +50,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p52"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="StrawBerry"
@@ -67,14 +69,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p53"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Orange"
@@ -86,13 +88,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p54"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
-        android:layout_height="0dp" android:layout_weight="1"><TextView
-
+        android:layout_height="0dp" android:layout_weight="1">
+        <TextView
+            android:background="@color/label"
         android:layout_width="100dp" android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Jeera"
@@ -104,14 +107,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p55"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Cola"
@@ -123,7 +126,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p56"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
 
     </LinearLayout>
@@ -131,7 +134,7 @@
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Blue Berry"
@@ -143,14 +146,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p57"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Grapes"
@@ -162,14 +165,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p58"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Litchi"
@@ -181,14 +184,14 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p59"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent" android:orientation="horizontal"
         android:layout_height="0dp" android:layout_weight="1">
         <TextView
-
+            android:background="@color/label"
             android:layout_width="100dp" android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Apple"
@@ -201,13 +204,22 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p510"
             android:layout_height="wrap_content"
-            android:text="Lemon"
+            android:text="Lemon" android:background="#f4cc9f"
             />
     </LinearLayout>
-    <Button
-        android:id="@+id/save5"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">    <Button
+        android:id="@+id/check"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:text="Save" android:layout_gravity="center" />
+        android:background="@color/colorPrimary"
+        android:text="Check"  />
+        <Button
+            android:id="@+id/save5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Save" android:layout_marginLeft="50dp" /></LinearLayout>
+
 </LinearLayout>

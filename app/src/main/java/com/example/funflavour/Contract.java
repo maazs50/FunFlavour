@@ -13,5 +13,12 @@ public class Contract {
     public final static String APPLE="apple";
     public final static String MANGO="mango";
     public final static String TOTAL_COUNT="TotalCount";
-    public final static String TOTAL_AMOUNT="TotalAmount";
+    public final static String TOTAL_AMOUNT="total_amount";
+    public final static String HIGH_VOLUME="high_vol";
+    public final static String HIGH_VOLUME_COUNT="high_vol_count";
+    public final static String LOW_VOLUME="low_vol";
+    public final static String LOW_VOLUME_COUNT="low_vol_count";
+    public final static String MANGO_COUNT="mango_count";
+    public final static String TIME="time";
+
 }

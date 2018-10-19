@@ -25,28 +25,26 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button makeEntry,records,signOut;
-
-
+    Button makeEntry,records,signOut, exit;
         private FirebaseAuth mAuth;
+        private FirebaseFirestore firebaseFirestore;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            records=findViewById(R.id.records);
-            makeEntry=findViewById(R.id.entry);
-            signOut=findViewById(R.id.signout);
+            initialize();
+            setTitle("FUN FLAVORS");
             makeEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(MainActivity.this,MakeEntry.class));
                 }
             });
-            mAuth=FirebaseAuth.getInstance();
+
             records.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this,RecordActivity.class));
+                    startActivity(new Intent(MainActivity.this,RecordList.class));
                 }
             });
 //Map for entry
@@ -57,15 +55,34 @@ signOut.setOnClickListener(new View.OnClickListener() {
         sendToLogin();
     }
 });
+
+exit.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+});
+
         }
 
-        @Override
+    private void initialize(){
+    records=findViewById(R.id.records);
+    makeEntry=findViewById(R.id.entry);
+    signOut=findViewById(R.id.signout);
+    exit=findViewById(R.id.exit);
+    mAuth=FirebaseAuth.getInstance();
+    firebaseFirestore=FirebaseFirestore.getInstance();
+        }
+
+    @Override
         protected void onStart() {
             super.onStart();
             FirebaseUser currentUser=mAuth.getCurrentUser();
             if (currentUser==null){
                 sendToLogin();
             }
+
 
         }
 

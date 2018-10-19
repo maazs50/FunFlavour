@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent" android:id="@+id/list_item_layout"
+    android:layout_height="wrap_content" android:layout_marginTop="5dp" android:background="@color/colorPrimary">
+
+<TextView
+    android:layout_width="wrap_content" android:id="@+id/r_date" android:textColor="#FFFFFF" android:textSize="20sp"
+    android:layout_height="wrap_content" android:text="Date" android:layout_gravity="center"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    <TextView
+        android:layout_width="0dp" android:layout_weight="1"  android:gravity="center" android:textColor="#FFFFFF"
+        android:layout_height="wrap_content" android:text="Low Volume(5)" />
+    <TextView
+        android:layout_width="0dp" android:layout_weight="1" android:gravity="center" android:textColor="#FFFFFF"
+        android:layout_height="wrap_content" android:text="High Volume(10)"/>
+    <TextView
+        android:layout_width="0dp" android:layout_weight="1"  android:gravity="center" android:textColor="#FFFFFF"
+        android:layout_height="wrap_content" android:text="Mango(7)" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/r_low_vol" android:gravity="center"
+            android:layout_height="wrap_content" android:text="0" android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/r_high_vol" android:gravity="center"
+            android:layout_height="wrap_content" android:text="0"  android:textColor="#FFFFFF" />
+        <TextView
+            android:layout_width="0dp" android:layout_weight="1" android:id="@+id/r_mango" android:gravity="center"
+            android:layout_height="wrap_content" android:text="0" android:textColor="#FFFFFF"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content" android:id="@+id/r_amt" android:layout_gravity="center" android:textSize="22sp" android:textColor="#FFFFFF"
+        android:layout_height="wrap_content" android:text="Amount" />
+</LinearLayout>

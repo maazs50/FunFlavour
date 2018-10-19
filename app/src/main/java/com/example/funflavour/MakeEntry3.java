@@ -94,21 +94,20 @@ private LinearLayout linearLayout;
 
                 mangoCountTextView.setText(String.valueOf(mangoCount));
                 totalHighVolTextView.setText(String.valueOf(totalHighVolume));
-
                 totalLowVolTextView.setText(String.valueOf(totalLowVolume));
                 totalSum.setText(String.valueOf(sum));
 
                 Log.v("Values",mangoCount+":"+totalLowVolume+":"+totalHighVolume);
                 disableButtons();
                 Map<String,Object> finalRecord=new HashMap<>();
-                finalRecord.put("Time",FieldValue.serverTimestamp());
-                finalRecord.put("High Volume",totalHighVolume);
-                finalRecord.put("Low Volume",totalLowVolume);
-                finalRecord.put("Mango",totalMango);
-                finalRecord.put("High Count",highVolCount);
-                finalRecord.put("Low Count",lowVolCount);
-                finalRecord.put("Mango Count",mangoCount);
-                finalRecord.put("Total Amount",sum);
+                finalRecord.put(Contract.TIME,FieldValue.serverTimestamp());
+                finalRecord.put(Contract.HIGH_VOLUME,totalHighVolume);
+                finalRecord.put(Contract.LOW_VOLUME,totalLowVolume);
+                finalRecord.put(Contract.MANGO,totalMango);
+                finalRecord.put(Contract.HIGH_VOLUME_COUNT,highVolCount);
+                finalRecord.put(Contract.LOW_VOLUME_COUNT,lowVolCount);
+                finalRecord.put(Contract.MANGO_COUNT,mangoCount);
+                finalRecord.put(Contract.TOTAL_AMOUNT,sum);
                 firebaseFirestore.collection("Records").document(getDate()).set(finalRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete( Task<Void> task) {
@@ -159,9 +158,10 @@ private LinearLayout linearLayout;
             public void onSuccess(QuerySnapshot documentSnapshots) {
                 DocumentSnapshot ds=documentSnapshots.getDocuments().get(0);
                 if (ds.exists()){
-                    totalHighVolume=Integer.parseInt(ds.getData().get("TotalAmount").toString());
+                    totalHighVolume=Integer.parseInt(ds.getData().get(Contract.TOTAL_AMOUNT).toString());
                     highVolCount=Integer.parseInt(ds.getData().get("TotalCount").toString());
                     highCount.setText(String.valueOf(highVolCount));
+
                     sum=sum+totalHighVolume;
                             
                 }
@@ -176,7 +176,7 @@ private LinearLayout linearLayout;
             public void onSuccess(QuerySnapshot documentSnapshots) {
                 DocumentSnapshot ds=documentSnapshots.getDocuments().get(0);
                 if (ds.exists()){
-                    totalLowVolume=totalLowVolume+Integer.parseInt(ds.getData().get("TotalAmount").toString());
+                    totalLowVolume=totalLowVolume+Integer.parseInt(ds.getData().get(Contract.TOTAL_AMOUNT).toString());
                     lowVolCount=Integer.parseInt(ds.getData().get("TotalCount").toString());
                     lowCount.setText(String.valueOf(lowVolCount));
                     sum=sum+totalLowVolume;
