@@ -38,7 +38,7 @@ private TextView totalMangoTextView,totalLowVolTextView,totalHighVolTextView,tot
         lowCount, highCount,mangoCountTextView;
 private FirebaseAuth mAuth;
 private FirebaseFirestore firebaseFirestore;
-public int totalLowVolume,totalHighVolume, totalMango=0, sum=0, lowVolCount,highVolCount;
+public long totalLowVolume,totalHighVolume, totalMango=0, sum=0, lowVolCount,highVolCount;
 private LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,5 +203,8 @@ private LinearLayout linearLayout;
         mangoCountTextView=findViewById(R.id.mangoCount);
         mAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
+        mango.requestFocus();
+
     }
+
 }

@@ -23,7 +23,7 @@
             />
         <EditText
             android:layout_width="100dp" android:id="@+id/d51" android:maxLength="7"
-            android:layout_height="wrap_content"  android:inputType="number"/>
+            android:layout_height="wrap_content"  android:inputType="number"             />
 
         <TextView
 
@@ -50,7 +50,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p52"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Fruit Beer" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -69,7 +69,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p53"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="StrawBerry" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -88,7 +88,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p54"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Orange" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -107,7 +107,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p55"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Jeera" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -126,7 +126,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p56"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Cola" android:background="#f4cc9f"
             />
 
     </LinearLayout>
@@ -146,7 +146,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p57"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Blue Berry" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -165,7 +165,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p58"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Grapes" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -184,7 +184,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p59"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Litchi" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout
@@ -204,7 +204,7 @@
 
             android:layout_width="100dp" android:gravity="center" android:id="@+id/p510"
             android:layout_height="wrap_content"
-            android:text="Lemon" android:background="#f4cc9f"
+            android:text="Apple" android:background="#f4cc9f"
             />
     </LinearLayout>
     <LinearLayout

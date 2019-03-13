@@ -12,7 +12,7 @@
 
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/green_button"
         android:layout_marginStart="57dp"
         android:layout_marginTop="135dp"
         android:layout_marginEnd="57dp"
@@ -35,13 +35,13 @@
         android:layout_height="0dp"
         android:layout_marginStart="57dp"
         android:layout_marginEnd="57dp"
-        android:background="@color/colorPrimaryDark"
         android:layout_marginBottom="30dp"
         android:shadowColor="#562e19"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:text="Records"
+        android:background="@drawable/green_button"
         android:textColor="#d4c99e"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/signout"
@@ -56,8 +56,8 @@
         android:layout_height="0dp"
 
         android:layout_marginStart="57dp"
-        android:background="@color/colorPrimaryDark"
-
+        android:background="@drawable/green_button"
+        android:enabled="false"
         android:layout_marginEnd="57dp"
         android:layout_marginBottom="136dp"
         android:shadowColor="#A8A8A8"
@@ -75,10 +75,10 @@
 
     <Button
         android:id="@+id/exit"
-        android:background="@color/colorPrimaryDark"
 
         android:layout_width="250dp"
         android:layout_height="64dp"
+        android:background="@drawable/green_button"
 
         android:layout_marginStart="57dp"
         android:layout_marginEnd="57dp"

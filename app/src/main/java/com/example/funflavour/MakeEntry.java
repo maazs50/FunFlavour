@@ -1,8 +1,10 @@
 package com.example.funflavour;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +66,7 @@ public class MakeEntry extends AppCompatActivity {
     private DocumentSnapshot lastVisible;
     private Map<String,Object> calRecord;
     private ProgressBar makeProgress;
+    Vibrator vibe ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,7 @@ public class MakeEntry extends AppCompatActivity {
         getSupportActionBar().setTitle("Low Volume");
         initalize();
         populate();
+        vibe = (Vibrator)MakeEntry.this.getSystemService(Context.VIBRATOR_SERVICE);
         save.setEnabled(false);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +206,7 @@ public class MakeEntry extends AppCompatActivity {
                 !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
                 !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
                 !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
+            vibe.vibrate(100);
             makeProgress.setVisibility(View.VISIBLE);
             final int d1=Integer.parseInt(d1String);
             final int d2=Integer.parseInt(d2String);
@@ -294,6 +299,7 @@ public class MakeEntry extends AppCompatActivity {
                                     makeProgress.setVisibility(View.INVISIBLE);
 
                                     startActivity(intent);
+                                    finish();
                                 }
                                 else{
                                     String exception = task.getException().toString();

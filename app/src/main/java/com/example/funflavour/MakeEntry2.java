@@ -1,7 +1,9 @@
 package com.example.funflavour;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -59,6 +61,8 @@ public class MakeEntry2 extends AppCompatActivity {
     private FirebaseFirestore mFireStore;
     private Map<String,Object> calRecord2;
     private ProgressBar makeProgress;
+    Vibrator vibe ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,7 @@ public class MakeEntry2 extends AppCompatActivity {
         getSupportActionBar().setTitle("High Volume");
         initialize();
         populate();
+        vibe=(Vibrator)MakeEntry2.this.getSystemService(Context.VIBRATOR_SERVICE);
         save.setEnabled(false);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +187,7 @@ private void calculations(){
             !TextUtils.isEmpty(d5String)&&!TextUtils.isEmpty(d6String)&&
             !TextUtils.isEmpty(d7String)&&!TextUtils.isEmpty(d8String)&&
             !TextUtils.isEmpty(d9String)&&!TextUtils.isEmpty(d10String)) {
+        vibe.vibrate(100);
         makeProgress.setVisibility(View.VISIBLE);
         final int d1=Integer.parseInt(d1String);
         final int d2=Integer.parseInt(d2String);

@@ -57,13 +57,13 @@ public class RecordList extends AppCompatActivity {
 
 
       //To check monthly
-//         mFirestore.collection("Records").orderBy("Time",Query.Direction.DESCENDING).limit(13).addSnapshotListener(new EventListener<QuerySnapshot>() {
+//         mFirestore.collection("Records").orderBy("time",Query.Direction.DESCENDING).limit(500).addSnapshotListener(new EventListener<QuerySnapshot>() {
 //            @Override
 //            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 //                long sum=0;
 //                for (DocumentSnapshot doc:documentSnapshots){
-//                    String value=doc.get("Total Amount").toString();
-//                    String time=doc.get("Time").toString();
+//                    String value=doc.get("total_amount").toString();
+//                    String time=doc.get("time").toString();
 //                    sum=sum+Long.parseLong(value);
 //                    Log.i(time +" : ",value);
 //
@@ -71,7 +71,7 @@ public class RecordList extends AppCompatActivity {
 //                Log.i("Sum : ",String.valueOf(sum));
 //            }
 //        });
-//
+
 
     }
 

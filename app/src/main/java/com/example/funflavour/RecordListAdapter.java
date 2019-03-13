@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.*;
 
-import static com.example.funflavour.R.color.cardview_dark_background;
+
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.ViewHolder> {
     public List<Record> mList;
@@ -41,9 +41,11 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Vi
         } else if (amtValue<2000){
             color=resources.getColor(R.color.lightGreen);
 
-        } else{
+        } else if (amtValue<3000){
             color=resources.getColor(R.color.gold);
 
+        }else{
+            color=resources.getColor(R.color.manja );
         }
         holder.linearLayout.setBackgroundColor(color);
         String amt=String.valueOf(amtValue);
